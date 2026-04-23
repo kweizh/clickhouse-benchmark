@@ -1,0 +1,68 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 4,
+            "passed": 0,
+            "failed": 4,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1776882862.8667204,
+            "stop": 1776882863.1017911
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_schema_migrations_table_exists",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.04736803891137242,
+                "start": 1776882862.8792832,
+                "stop": 1776882862.9415329,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_schema_migrations_table_exists():\n        \"\"\"Priority 1: Use clickhouse-client to verify the schema_migrations table exists.\"\"\"\n        result = subprocess.run(\n            [\"clickhouse-client\", \"--query\", \"EXISTS schema_migrations\"],\n            capture_output=True, text=True\n        )\n>       assert result.returncode == 0, f\"clickhouse-client failed: {result.stderr}\"\nE       AssertionError: clickhouse-client failed: Code: 210. DB::NetException: Connection refused (localhost:9000). (NETWORK_ERROR)\nE         \nE         \nE       assert 210 == 0\nE        +  where 210 = CompletedProcess(args=['clickhouse-client', '--query', 'EXISTS schema_migrations'], returncode=210, stdout='', stderr='Code: 210. DB::NetException: Connection refused (localhost:9000). (NETWORK_ERROR)\\n\\n').returncode\n\ntests/test_final_state.py:11: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_schema_migrations_versions",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.050119851948693395,
+                "start": 1776882862.9417543,
+                "stop": 1776882862.9947324,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_schema_migrations_versions():\n        \"\"\"Priority 1: Use clickhouse-client to verify the two migration records exist.\"\"\"\n        result = subprocess.run(\n            [\"clickhouse-client\", \"--query\", \"SELECT version FROM schema_migrations ORDER BY version\", \"--format\", \"JSON\"],\n            capture_output=True, text=True\n        )\n>       assert result.returncode == 0, f\"clickhouse-client failed: {result.stderr}\"\nE       AssertionError: clickhouse-client failed: Code: 210. DB::NetException: Connection refused (localhost:9000). (NETWORK_ERROR)\nE         \nE         \nE       assert 210 == 0\nE        +  where 210 = CompletedProcess(args=['clickhouse-client', '--query', 'SELECT version FROM schema_migrations ORDER BY version', '--fo...urncode=210, stdout='', stderr='Code: 210. DB::NetException: Connection refused (localhost:9000). (NETWORK_ERROR)\\n\\n').returncode\n\ntests/test_final_state.py:20: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_users_table_exists",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.05082349991425872,
+                "start": 1776882862.994925,
+                "stop": 1776882863.0480063,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_users_table_exists():\n        \"\"\"Priority 1: Use clickhouse-client to verify the users table exists.\"\"\"\n        result = subprocess.run(\n            [\"clickhouse-client\", \"--query\", \"EXISTS users\"],\n            capture_output=True, text=True\n        )\n>       assert result.returncode == 0, f\"clickhouse-client failed: {result.stderr}\"\nE       AssertionError: clickhouse-client failed: Code: 210. DB::NetException: Connection refused (localhost:9000). (NETWORK_ERROR)\nE         \nE         \nE       assert 210 == 0\nE        +  where 210 = CompletedProcess(args=['clickhouse-client', '--query', 'EXISTS users'], returncode=210, stdout='', stderr='Code: 210. DB::NetException: Connection refused (localhost:9000). (NETWORK_ERROR)\\n\\n').returncode\n\ntests/test_final_state.py:32: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_users_table_columns",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.05110616504680365,
+                "start": 1776882863.0482557,
+                "stop": 1776882863.1016185,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_users_table_columns():\n        \"\"\"Priority 1: Use clickhouse-client to verify the columns of the users table.\"\"\"\n        result = subprocess.run(\n            [\"clickhouse-client\", \"--query\", \"DESCRIBE TABLE users\", \"--format\", \"JSON\"],\n            capture_output=True, text=True\n        )\n>       assert result.returncode == 0, f\"clickhouse-client failed: {result.stderr}\"\nE       AssertionError: clickhouse-client failed: Code: 210. DB::NetException: Connection refused (localhost:9000). (NETWORK_ERROR)\nE         \nE         \nE       assert 210 == 0\nE        +  where 210 = CompletedProcess(args=['clickhouse-client', '--query', 'DESCRIBE TABLE users', '--format', 'JSON'], returncode=210, stdout='', stderr='Code: 210. DB::NetException: Connection refused (localhost:9000). (NETWORK_ERROR)\\n\\n').returncode\n\ntests/test_final_state.py:41: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

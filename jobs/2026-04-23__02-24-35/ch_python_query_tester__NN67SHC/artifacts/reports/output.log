@@ -1,0 +1,2 @@
+2026-04-22 18:45:51.494458: Error occurred: Error HTTPConnectionPool(host='localhost', port=8123): Max retries exceeded with url: /?query_id=77bc0665-74c3-40db-86c2-43067431ff82 (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8123): Failed to establish a new connection: [Errno 111] Connection refused")) executing HTTP request attempt 1 (http://localhost:8123)
+2026-04-22 18:46:51.621599: Query executed in 0.0062 seconds. Results: [['click', 334], ['view', 333], ['purchase', 333]]

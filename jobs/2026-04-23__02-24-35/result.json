@@ -1,0 +1,57 @@
+{
+    "id": "a3e2878e-ad81-43b9-9b35-2e3bfd485c72",
+    "started_at": "2026-04-23T02:24:39.629818",
+    "finished_at": "2026-04-23T02:50:59.064519",
+    "n_total_trials": 24,
+    "stats": {
+        "n_trials": 24,
+        "n_errors": 2,
+        "evals": {
+            "pochi__gemini-3-flash__tasks": {
+                "n_trials": 22,
+                "n_errors": 2,
+                "metrics": [
+                    {
+                        "mean": 0.2916666666666667
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "node_js_streaming_query_executio__ZVyXUnm",
+                            "python_s3_data_ingestion__rg5yVq8",
+                            "python_sdk_basic_ingestion__8gzy6in",
+                            "system_metrics_dashboard__ybGeTMj",
+                            "clickhouse_metrics_dashboard__xGLMGAu",
+                            "schema_migration__LsVyQ2B",
+                            "python_schema_migration_tool__dCmpHb8",
+                            "ch_cli_role_management__bgDSJmT",
+                            "ch_cli_status_checker__AKHXYrF",
+                            "ch_nodejs_analytics_api__ZJeACaQ",
+                            "ch_python_schema_migration__t6CiuGP",
+                            "ch_nodejs_grafana_setup__9UnvFvE",
+                            "ch_python_query_tester__NN67SHC",
+                            "ch_python_async_insert__orX74a2",
+                            "ch_python_s3_parquet__TWxtFZA"
+                        ],
+                        "1.0": [
+                            "ch_cli_backup_config__rxL2pu9",
+                            "ch_cli_service_deletion__SqaL3Bn",
+                            "ch_nodejs_csv_load__HL3xU7i",
+                            "ch_nodejs_query_endpoint__WtsbSvP",
+                            "ch_python_github_archive__ppCwKwR",
+                            "ch_nodejs_data_dictionary__X8g55qs",
+                            "ch_python_cold_start_handler__Z7friwx"
+                        ]
+                    }
+                },
+                "exception_stats": {
+                    "NonZeroAgentExitCodeError": [
+                        "python_schema_migration_tool_v2__APgqLzc",
+                        "ch_cli_ip_access_list__X6ju3pp"
+                    ]
+                }
+            }
+        }
+    }
+}

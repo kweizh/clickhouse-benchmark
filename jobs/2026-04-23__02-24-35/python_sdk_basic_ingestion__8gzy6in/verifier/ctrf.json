@@ -1,0 +1,53 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 1,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1776882523.1053782,
+            "stop": 1776882523.142033
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_script_exists",
+                "status": "passed",
+                "duration": 0.0005965951131656766,
+                "start": 1776882523.118707,
+                "stop": 1776882523.11961,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_log_exists_and_contains_3",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0007783299079164863,
+                "start": 1776882523.119867,
+                "stop": 1776882523.1370416,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_log_exists_and_contains_3():\n        log_path = os.path.join(PROJECT_DIR, \"output.log\")\n        assert os.path.isfile(log_path), f\"Log file {log_path} does not exist.\"\n        with open(log_path, \"r\") as f:\n            content = f.read()\n>       assert \"3\" in content, \"Log file does not contain the expected row count '3'.\"\nE       AssertionError: Log file does not contain the expected row count '3'.\nE       assert '3' in 'Error: Missing one or more environment variables: CLICKHOUSE_HOST, CLICKHOUSE_PORT, CLICKHOUSE_USER, CLICKHOUSE_PASSWORD\\n'\n\ntests/test_final_state.py:16: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_database_state",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0007102498784661293,
+                "start": 1776882523.137304,
+                "stop": 1776882523.1418288,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_database_state():\n        # Install clickhouse-connect if not already installed by the user\n        # (The user was supposed to install it, but we can verify it's available)\n        try:\n>           import clickhouse_connect\nE           ModuleNotFoundError: No module named 'clickhouse_connect'\n\ntests/test_final_state.py:22: ModuleNotFoundError\n\nDuring handling of the above exception, another exception occurred:\n\n    def test_database_state():\n        # Install clickhouse-connect if not already installed by the user\n        # (The user was supposed to install it, but we can verify it's available)\n        try:\n            import clickhouse_connect\n        except ImportError:\n>           pytest.fail(\"clickhouse-connect is not installed in the environment.\")\nE           Failed: clickhouse-connect is not installed in the environment.\n\ntests/test_final_state.py:24: Failed",
+                "message": "The test failed in the call phase"
+            }
+        ]
+    }
+}

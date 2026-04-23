@@ -1,0 +1,59 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 4,
+            "passed": 3,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1776883001.0824487,
+            "stop": 1776883001.1103714
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_script_exists",
+                "status": "passed",
+                "duration": 0.0004696351243183017,
+                "start": 1776883001.0934417,
+                "stop": 1776883001.0941153,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_is_executable",
+                "status": "passed",
+                "duration": 0.00038566882722079754,
+                "start": 1776883001.0943415,
+                "stop": 1776883001.0948586,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_contains_correct_command",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0005946779856458306,
+                "start": 1776883001.0950258,
+                "stop": 1776883001.1094737,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_script_contains_correct_command():\n        with open(SCRIPT_PATH, 'r') as f:\n            content = f.read()\n>       assert \"clickhousectl cloud service get\" in content, \\\n            \"Script does not contain the expected command 'clickhousectl cloud service get'.\"\nE       AssertionError: Script does not contain the expected command 'clickhousectl cloud service get'.\nE       assert 'clickhousectl cloud service get' in '#!/bin/bash\\nclickhouse-client --query \"SELECT version()\" > /home/user/project/status.log\\n'\n\ntests/test_final_state.py:16: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_script_redirects_output",
+                "status": "passed",
+                "duration": 0.0004237049724906683,
+                "start": 1776883001.109673,
+                "stop": 1776883001.110221,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

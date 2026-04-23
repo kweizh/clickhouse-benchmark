@@ -1,0 +1,3 @@
+curl: (28) Failed to connect to releases.astral.sh port 443 after 133991 ms: Connection timed out
+/tests/test.sh: line 8: /home/user/.local/bin/env: No such file or directory
+/tests/test.sh: line 11: uvx: command not found

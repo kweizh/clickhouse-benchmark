@@ -1,0 +1,89 @@
+{
+    "id": "af0abbff-3a55-46c5-930d-bb0a0a32e7c3",
+    "task_name": "python_schema_migration_tool_v2",
+    "trial_name": "python_schema_migration_tool_v2__APgqLzc",
+    "trial_uri": "file:///home/kw/code/zealt/pochi-harbor/jobs/2026-04-23__02-24-35/python_schema_migration_tool_v2__APgqLzc",
+    "task_id": {
+        "path": "/home/kw/code/zealt/clickhouse-benchmark/tasks/python_schema_migration_tool_v2"
+    },
+    "source": "tasks",
+    "task_checksum": "78d17dca943f3024a69fba7536b16fe2802a3df748bc0408bf8926d374582307",
+    "config": {
+        "task": {
+            "path": "/home/kw/code/zealt/clickhouse-benchmark/tasks/python_schema_migration_tool_v2",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": "tasks"
+        },
+        "trial_name": "python_schema_migration_tool_v2__APgqLzc",
+        "trials_dir": "jobs/2026-04-23__02-24-35",
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": null,
+            "import_path": "agents.pochi:Pochi",
+            "model_name": "google/gemini-3-flash",
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "kwargs": {},
+            "env": {}
+        },
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": REDACTED,
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "suppress_override_warnings": false,
+            "mounts_json": null,
+            "env": {},
+            "kwargs": {}
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": false
+        },
+        "artifacts": [],
+        "job_id": "a3e2878e-ad81-43b9-9b35-2e3bfd485c72"
+    },
+    "agent_info": {
+        "name": "pochi",
+        "version": "unknown",
+        "model_info": {
+            "name": "gemini-3-flash",
+            "provider": "google"
+        }
+    },
+    "agent_result": null,
+    "verifier_result": null,
+    "exception_info": {
+        "exception_type": "NonZeroAgentExitCodeError",
+        "exception_message": "Command failed (exit 35): set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version\nstdout: curl: (35) OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to app.getpochi.com:443 \n\nstderr: None",
+        "exception_traceback": "Traceback (most recent call last):\n  File \"/home/kw/.local/share/uv/tools/harbor/lib/python3.12/site-packages/harbor/trial/trial.py\", line 533, in run\n    await self._setup_agent()\n  File \"/home/kw/.local/share/uv/tools/harbor/lib/python3.12/site-packages/harbor/trial/trial.py\", line 266, in _setup_agent\n    await asyncio.wait_for(\n  File \"/opt/miniconda3/lib/python3.12/asyncio/tasks.py\", line 520, in wait_for\n    return await fut\n           ^^^^^^^^^\n  File \"/home/kw/.local/share/uv/tools/harbor/lib/python3.12/site-packages/harbor/agents/installed/base.py\", line 384, in setup\n    await self.install(environment)\n  File \"/home/kw/code/zealt/pochi-harbor/agents/pochi.py\", line 58, in install\n    await self.exec_as_agent(\n  File \"/home/kw/.local/share/uv/tools/harbor/lib/python3.12/site-packages/harbor/agents/installed/base.py\", line 358, in exec_as_agent\n    return await self._exec(\n           ^^^^^^^^^^^^^^^^^\n  File \"/home/kw/.local/share/uv/tools/harbor/lib/python3.12/site-packages/harbor/agents/installed/base.py\", line 321, in _exec\n    raise NonZeroAgentExitCodeError(\nharbor.agents.installed.base.NonZeroAgentExitCodeError: Command failed (exit 35): set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version\nstdout: curl: (35) OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to app.getpochi.com:443 \n\nstderr: None\n",
+        "occurred_at": "2026-04-23T02:25:11.414188"
+    },
+    "started_at": "2026-04-22T18:24:41.346834Z",
+    "finished_at": "2026-04-22T18:25:50.816521Z",
+    "environment_setup": {
+        "started_at": "2026-04-22T18:24:41.347598Z",
+        "finished_at": "2026-04-22T18:24:54.437553Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-04-22T18:24:54.437564Z",
+        "finished_at": "2026-04-22T18:25:11.412950Z"
+    },
+    "agent_execution": null,
+    "verifier": null
+}

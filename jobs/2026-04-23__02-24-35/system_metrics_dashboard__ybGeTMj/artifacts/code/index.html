@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClickHouse System Metrics</title>
+    <style>
+        body { font-family: sans-serif; margin: 2rem; }
+        h1 { color: #333; }
+        ul { list-style-type: none; padding: 0; }
+        li { background: #f4f4f4; margin-bottom: 0.5rem; padding: 0.5rem 1rem; border-radius: 4px; display: flex; justify-content: space-between; }
+        .metric-name { font-weight: bold; }
+        .metric-value { color: #007bff; }
+    </style>
+</head>
+<body>
+    <h1>ClickHouse System Metrics</h1>
+    <div id="status">Loading metrics...</div>
+    <ul id="metrics-list"></ul>
+
+    <script>
+        async function fetchMetrics() {
+            try {
+                const response = await fetch('/api/metrics');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                const list = document.getElementById('metrics-list');
+                const status = document.getElementById('status');
+                
+                status.textContent = '';
+                list.innerHTML = '';
+                
+                data.forEach(item => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<span class="metric-name">${item.metric}</span> <span class="metric-value">${item.value}</span>`;
+                    list.appendChild(li);
+                });
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('status').textContent = 'Error loading metrics: ' + error.message;
+            }
+        }
+
+        fetchMetrics();
+    </script>
+</body>
+</html>

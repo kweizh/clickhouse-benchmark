@@ -1,0 +1,1 @@
+Error: CLICKHOUSE_HOST and CLICKHOUSE_PASSWORD environment variables must be set.

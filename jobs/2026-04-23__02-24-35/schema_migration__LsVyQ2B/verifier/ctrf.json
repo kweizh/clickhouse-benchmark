@@ -1,0 +1,41 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 1,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1776882789.0339441,
+            "stop": 1776882789.0626075
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_table_exists_and_altered",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0006784660508856177,
+                "start": 1776882789.0458288,
+                "stop": 1776882789.0615282,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_table_exists_and_altered():\n        host = os.environ.get(\"CLICKHOUSE_HOST\")\n        password = os.environ.get(\"CLICKHOUSE_PASSWORD\")\n        user = os.environ.get(\"CLICKHOUSE_USERNAME\", \"REDACTED\")\n    \n>       assert host and password, \"CLICKHOUSE_HOST and CLICKHOUSE_PASSWORD must be set.\"\nE       AssertionError: CLICKHOUSE_HOST and CLICKHOUSE_PASSWORD must be set.\nE       assert (None)\n\ntests/test_final_state.py:11: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_script_execution_log",
+                "status": "passed",
+                "duration": 0.0004948759451508522,
+                "start": 1776882789.0617814,
+                "stop": 1776882789.0624347,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

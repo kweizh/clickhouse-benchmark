@@ -1,0 +1,93 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 25ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 4 items
+
+tests/test_final_state.py FFFF                                           [100%]
+
+=================================== FAILURES ===================================
+_____________________ test_schema_migrations_table_exists ______________________
+
+    def test_schema_migrations_table_exists():
+        """Priority 1: Use clickhouse-client to verify the schema_migrations table exists."""
+        result = subprocess.run(
+            ["clickhouse-client", "--query", "EXISTS schema_migrations"],
+            capture_output=True, text=True
+        )
+>       assert result.returncode == 0, f"clickhouse-client failed: {result.stderr}"
+E       AssertionError: clickhouse-client failed: Code: 210. DB::NetException: Connection refused (localhost:9000). (NETWORK_ERROR)
+E         
+E         
+E       assert 210 == 0
+E        +  where 210 = CompletedProcess(args=['clickhouse-client', '--query', 'EXISTS schema_migrations'], returncode=210, stdout='', stderr='Code: 210. DB::NetException: Connection refused (localhost:9000). (NETWORK_ERROR)\n\n').returncode
+
+tests/test_final_state.py:11: AssertionError
+_______________________ test_schema_migrations_versions ________________________
+
+    def test_schema_migrations_versions():
+        """Priority 1: Use clickhouse-client to verify the two migration records exist."""
+        result = subprocess.run(
+            ["clickhouse-client", "--query", "SELECT version FROM schema_migrations ORDER BY version", "--format", "JSON"],
+            capture_output=True, text=True
+        )
+>       assert result.returncode == 0, f"clickhouse-client failed: {result.stderr}"
+E       AssertionError: clickhouse-client failed: Code: 210. DB::NetException: Connection refused (localhost:9000). (NETWORK_ERROR)
+E         
+E         
+E       assert 210 == 0
+E        +  where 210 = CompletedProcess(args=['clickhouse-client', '--query', 'SELECT version FROM schema_migrations ORDER BY version', '--fo...urncode=210, stdout='', stderr='Code: 210. DB::NetException: Connection refused (localhost:9000). (NETWORK_ERROR)\n\n').returncode
+
+tests/test_final_state.py:20: AssertionError
+___________________________ test_users_table_exists ____________________________
+
+    def test_users_table_exists():
+        """Priority 1: Use clickhouse-client to verify the users table exists."""
+        result = subprocess.run(
+            ["clickhouse-client", "--query", "EXISTS users"],
+            capture_output=True, text=True
+        )
+>       assert result.returncode == 0, f"clickhouse-client failed: {result.stderr}"
+E       AssertionError: clickhouse-client failed: Code: 210. DB::NetException: Connection refused (localhost:9000). (NETWORK_ERROR)
+E         
+E         
+E       assert 210 == 0
+E        +  where 210 = CompletedProcess(args=['clickhouse-client', '--query', 'EXISTS users'], returncode=210, stdout='', stderr='Code: 210. DB::NetException: Connection refused (localhost:9000). (NETWORK_ERROR)\n\n').returncode
+
+tests/test_final_state.py:32: AssertionError
+___________________________ test_users_table_columns ___________________________
+
+    def test_users_table_columns():
+        """Priority 1: Use clickhouse-client to verify the columns of the users table."""
+        result = subprocess.run(
+            ["clickhouse-client", "--query", "DESCRIBE TABLE users", "--format", "JSON"],
+            capture_output=True, text=True
+        )
+>       assert result.returncode == 0, f"clickhouse-client failed: {result.stderr}"
+E       AssertionError: clickhouse-client failed: Code: 210. DB::NetException: Connection refused (localhost:9000). (NETWORK_ERROR)
+E         
+E         
+E       assert 210 == 0
+E        +  where 210 = CompletedProcess(args=['clickhouse-client', '--query', 'DESCRIBE TABLE users', '--format', 'JSON'], returncode=210, stdout='', stderr='Code: 210. DB::NetException: Connection refused (localhost:9000). (NETWORK_ERROR)\n\n').returncode
+
+tests/test_final_state.py:41: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_final_state.py::test_schema_migrations_table_exists - Asser...
+FAILED tests/test_final_state.py::test_schema_migrations_versions - Assertion...
+FAILED tests/test_final_state.py::test_users_table_exists - AssertionError: c...
+FAILED tests/test_final_state.py::test_users_table_columns - AssertionError: ...
+============================== 4 failed in 0.24s ===============================

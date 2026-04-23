@@ -1,0 +1,8 @@
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command failed
+Trial python_schema_migration_tool_v2__APgqLzc failed: Command failed (exit 35): set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+stdout: curl: (35) OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to app.getpochi.com:443 
+
+stderr: None

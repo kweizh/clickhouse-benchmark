@@ -1,0 +1,120 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 1 item
+
+tests/test_final_state.py F                                              [100%]
+
+=================================== FAILURES ===================================
+____________________________ test_metrics_dashboard ____________________________
+
+start_app = None
+
+    def test_metrics_dashboard(start_app):
+        reason = "The application should display the total number of tables in the ClickHouse database."
+        truth = "Navigate to http://localhost:3000. Verify that the page loads successfully and contains the text 'Total Tables:' followed by a number."
+    
+        verifier = PochiVerifier()
+>       result = verifier.verify(
+            reason=reason,
+            truth=truth,
+            use_browser_agent=True,
+            trajectory_dir="/logs/verifier/pochi/test_metrics_dashboard"
+        )
+
+tests/test_final_state.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+root/.cache/uv/archive-v0/rw2KzGE67l1WWB2eNgcBl/lib/python3.12/site-packages/pochi_verifier/verifier.py:195: in verify
+    return self._parse_result(proc.stdout, proc.stderr)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pochi_verifier.verifier.PochiVerifier object at 0x7e9517fdc530>
+stdout = '- Initializing MCP connections...\nYou\n## Reason for this test The application should display the total number of ta...essary for verification as per the instructions. Additionally, the \'pochi_verifier\' skill is not found."\n}   \n  \n'
+stderr = '\x1b[37m2026-04-22 18:41:18.995\x1b[39m\x1b[0m\x1b[0m\t\x1b[32m\x1b[1mDEBUG\x1b[22m\x1b[39m\x1b[0m\x1b[0m\t\x1b[37mna...[0m\t\x1b[37m\x1b[39m\x1b[0m\x1b[0m\x1b[1m\x1b[37m\tPochi\x1b[39m\x1b[22m\x1b[0m\x1b[0m\tProcess exiting with code 0\n'
+
+    def _parse_result(self, stdout: str, stderr: str) -> VerificationResult:
+        """Parses the stdout from pochi to extract the verification result."""
+        # Find the JSON object that follows the `Task Completed` marker (with possible whitespace)
+        match = re.search(r"Task Completed.*?(\{.*)", stdout, re.DOTALL)
+        if not match:
+            raise PochiOutputError("Cannot extract the JSON from the output message.")
+        json_str = match.group(1)
+        # Extract the full JSON object, accounting for nested/escaped braces
+        brace_count = 0
+        in_string = False
+        escape = False
+        for i, c in enumerate(json_str):
+            if escape:
+                escape = False
+                continue
+            if c == '\\':
+                escape = True
+                continue
+            if c == '"':
+                in_string = not in_string
+            if not in_string:
+                if c == '{':
+                    brace_count += 1
+                elif c == '}':
+                    brace_count -= 1
+                    if brace_count == 0:
+                        json_str = json_str[:i+1]
+                        break
+        try:
+            parsed_json = json.loads(json_str)
+        except json.JSONDecodeError as e:
+            raise PochiOutputError(f"Failed to parse JSON from pochi output: {e}") from e
+    
+        status = parsed_json.get("status")
+        reason = parsed_json.get("reason")
+    
+        if not status or not reason:
+            raise PochiOutputError("The result JSON is missing 'status' or 'reason'.")
+    
+        if status == "fail":
+>           raise VerificationFailedError(f"Verification failed: {reason}")
+E           pochi_verifier.verifier.VerificationFailedError: Verification failed: The 'newTask' tool is unavailable in this environment, which is required to create the browser sub-agent necessary for verification as per the instructions. Additionally, the 'pochi_verifier' skill is not found.
+
+root/.cache/uv/archive-v0/rw2KzGE67l1WWB2eNgcBl/lib/python3.12/site-packages/pochi_verifier/verifier.py:246: VerificationFailedError
+---------------------------- Captured stdout setup -----------------------------
+
+up to date, audited 358 packages in 1s
+
+143 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+> app@0.1.0 build
+> next build
+
+▲ Next.js 16.2.4 (Turbopack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 4.0s
+  Running TypeScript ...
+  Finished TypeScript in 135ms ...
+  Collecting page data using 3 workers ...
+  Generating static pages using 3 workers (0/3) ...
+✓ Generating static pages using 3 workers (3/3) in 193ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+└ ○ /_not-found
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+=========================== short test summary info ============================
+FAILED tests/test_final_state.py::test_metrics_dashboard - pochi_verifier.ver...
+============================== 1 failed in 56.77s ==============================

@@ -1,0 +1,65 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 5,
+            "passed": 5,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1776883590.119893,
+            "stop": 1776883590.1435893
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_nodejs_project_initialized",
+                "status": "passed",
+                "duration": 0.0005124240415170789,
+                "start": 1776883590.1335688,
+                "stop": 1776883590.1343386,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_clickhouse_client_installed",
+                "status": "passed",
+                "duration": 0.0005147149786353111,
+                "start": 1776883590.1345456,
+                "stop": 1776883590.135201,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_extract_script_exists",
+                "status": "passed",
+                "duration": 0.0003816949902102351,
+                "start": 1776883590.1354444,
+                "stop": 1776883590.1359572,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_dictionary_file_exists",
+                "status": "passed",
+                "duration": 0.0003778629470616579,
+                "start": 1776883590.1361334,
+                "stop": 1776883590.1366367,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_dictionary_content",
+                "status": "passed",
+                "duration": 0.006394088850356638,
+                "start": 1776883590.136812,
+                "stop": 1776883590.1433995,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 0,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1776883777.8826983,
+            "stop": 1776883779.9436648
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_table_contains_data",
+                "status": "failed",
+                "duration": 2.022532891947776,
+                "start": 1776883777.8943954,
+                "stop": 1776883779.9393008,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "@pytest.fixture(scope=\"module\", autouse=True)\n    def setup_environment():\n        # Start clickhouse-server\n        server_process = subprocess.Popen(\n            [\"clickhouse-server\"],\n            stdout=subprocess.DEVNULL,\n            stderr=subprocess.DEVNULL,\n            preexec_fn=os.setsid\n        )\n    \n        if not wait_for_port(8123):\n            import signal\n            os.killpg(os.getpgid(server_process.pid), signal.SIGTERM)\n            pytest.fail(\"clickhouse-server failed to start on port 8123.\")\n    \n        # Run the user's script\n        result = subprocess.run(\n            [\"python3\", SCRIPT_PATH],\n            capture_output=True,\n            text=True,\n            cwd=PROJECT_DIR\n        )\n    \n        if result.returncode != 0:\n            import signal\n            os.killpg(os.getpgid(server_process.pid), signal.SIGTERM)\n>           pytest.fail(f\"User script failed to execute: {result.stderr}\")\nE           Failed: User script failed to execute: Traceback (most recent call last):\nE             File \"/home/user/project/async_insert.py\", line 1, in <module>\nE               import clickhouse_connect\nE           ModuleNotFoundError: No module named 'clickhouse_connect'\n\ntests/test_final_state.py:45: Failed"
+            },
+            {
+                "name": "test_final_state.py::test_script_uses_async_insert",
+                "status": "failed",
+                "duration": 0.00040784699376672506,
+                "start": 1776883779.9396756,
+                "stop": 1776883779.9434347,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "@pytest.fixture(scope=\"module\", autouse=True)\n    def setup_environment():\n        # Start clickhouse-server\n        server_process = subprocess.Popen(\n            [\"clickhouse-server\"],\n            stdout=subprocess.DEVNULL,\n            stderr=subprocess.DEVNULL,\n            preexec_fn=os.setsid\n        )\n    \n        if not wait_for_port(8123):\n            import signal\n            os.killpg(os.getpgid(server_process.pid), signal.SIGTERM)\n            pytest.fail(\"clickhouse-server failed to start on port 8123.\")\n    \n        # Run the user's script\n        result = subprocess.run(\n            [\"python3\", SCRIPT_PATH],\n            capture_output=True,\n            text=True,\n            cwd=PROJECT_DIR\n        )\n    \n        if result.returncode != 0:\n            import signal\n            os.killpg(os.getpgid(server_process.pid), signal.SIGTERM)\n>           pytest.fail(f\"User script failed to execute: {result.stderr}\")\nE           Failed: User script failed to execute: Traceback (most recent call last):\nE             File \"/home/user/project/async_insert.py\", line 1, in <module>\nE               import clickhouse_connect\nE           ModuleNotFoundError: No module named 'clickhouse_connect'\n\ntests/test_final_state.py:45: Failed"
+            }
+        ]
+    }
+}

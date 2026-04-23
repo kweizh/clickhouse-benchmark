@@ -1,0 +1,97 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 18ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 2 items
+
+tests/test_final_state.py EE                                             [100%]
+
+==================================== ERRORS ====================================
+__________________ ERROR at setup of test_table_contains_data __________________
+
+    @pytest.fixture(scope="module", autouse=True)
+    def setup_environment():
+        # Start clickhouse-server
+        server_process = subprocess.Popen(
+            ["clickhouse-server"],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            preexec_fn=os.setsid
+        )
+    
+        if not wait_for_port(8123):
+            import signal
+            os.killpg(os.getpgid(server_process.pid), signal.SIGTERM)
+            pytest.fail("clickhouse-server failed to start on port 8123.")
+    
+        # Run the user's script
+        result = subprocess.run(
+            ["python3", SCRIPT_PATH],
+            capture_output=True,
+            text=True,
+            cwd=PROJECT_DIR
+        )
+    
+        if result.returncode != 0:
+            import signal
+            os.killpg(os.getpgid(server_process.pid), signal.SIGTERM)
+>           pytest.fail(f"User script failed to execute: {result.stderr}")
+E           Failed: User script failed to execute: Traceback (most recent call last):
+E             File "/home/user/project/async_insert.py", line 1, in <module>
+E               import clickhouse_connect
+E           ModuleNotFoundError: No module named 'clickhouse_connect'
+
+tests/test_final_state.py:45: Failed
+_______________ ERROR at setup of test_script_uses_async_insert ________________
+
+    @pytest.fixture(scope="module", autouse=True)
+    def setup_environment():
+        # Start clickhouse-server
+        server_process = subprocess.Popen(
+            ["clickhouse-server"],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            preexec_fn=os.setsid
+        )
+    
+        if not wait_for_port(8123):
+            import signal
+            os.killpg(os.getpgid(server_process.pid), signal.SIGTERM)
+            pytest.fail("clickhouse-server failed to start on port 8123.")
+    
+        # Run the user's script
+        result = subprocess.run(
+            ["python3", SCRIPT_PATH],
+            capture_output=True,
+            text=True,
+            cwd=PROJECT_DIR
+        )
+    
+        if result.returncode != 0:
+            import signal
+            os.killpg(os.getpgid(server_process.pid), signal.SIGTERM)
+>           pytest.fail(f"User script failed to execute: {result.stderr}")
+E           Failed: User script failed to execute: Traceback (most recent call last):
+E             File "/home/user/project/async_insert.py", line 1, in <module>
+E               import clickhouse_connect
+E           ModuleNotFoundError: No module named 'clickhouse_connect'
+
+tests/test_final_state.py:45: Failed
+=========================== short test summary info ============================
+ERROR tests/test_final_state.py::test_table_contains_data - Failed: User scri...
+ERROR tests/test_final_state.py::test_script_uses_async_insert - Failed: User...
+============================== 2 errors in 2.06s ===============================

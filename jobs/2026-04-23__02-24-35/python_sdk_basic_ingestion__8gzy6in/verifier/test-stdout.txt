@@ -1,0 +1,64 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 27ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 3 items
+
+tests/test_final_state.py .FF                                            [100%]
+
+=================================== FAILURES ===================================
+________________________ test_log_exists_and_contains_3 ________________________
+
+    def test_log_exists_and_contains_3():
+        log_path = os.path.join(PROJECT_DIR, "output.log")
+        assert os.path.isfile(log_path), f"Log file {log_path} does not exist."
+        with open(log_path, "r") as f:
+            content = f.read()
+>       assert "3" in content, "Log file does not contain the expected row count '3'."
+E       AssertionError: Log file does not contain the expected row count '3'.
+E       assert '3' in 'Error: Missing one or more environment variables: CLICKHOUSE_HOST, CLICKHOUSE_PORT, CLICKHOUSE_USER, CLICKHOUSE_PASSWORD\n'
+
+tests/test_final_state.py:16: AssertionError
+_____________________________ test_database_state ______________________________
+
+    def test_database_state():
+        # Install clickhouse-connect if not already installed by the user
+        # (The user was supposed to install it, but we can verify it's available)
+        try:
+>           import clickhouse_connect
+E           ModuleNotFoundError: No module named 'clickhouse_connect'
+
+tests/test_final_state.py:22: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_database_state():
+        # Install clickhouse-connect if not already installed by the user
+        # (The user was supposed to install it, but we can verify it's available)
+        try:
+            import clickhouse_connect
+        except ImportError:
+>           pytest.fail("clickhouse-connect is not installed in the environment.")
+E           Failed: clickhouse-connect is not installed in the environment.
+
+tests/test_final_state.py:24: Failed
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_final_state.py::test_script_exists
+FAILED tests/test_final_state.py::test_log_exists_and_contains_3 - AssertionE...
+FAILED tests/test_final_state.py::test_database_state - Failed: clickhouse-co...
+========================= 2 failed, 1 passed in 0.04s ==========================

@@ -1,0 +1,101 @@
+{
+    "id": "b437ce33-bb6f-4896-9c87-a9ca7e2e3629",
+    "task_name": "ch_python_github_archive",
+    "trial_name": "ch_python_github_archive__ppCwKwR",
+    "trial_uri": "file:///home/kw/code/zealt/pochi-harbor/jobs/2026-04-23__02-24-35/ch_python_github_archive__ppCwKwR",
+    "task_id": {
+        "path": "/home/kw/code/zealt/clickhouse-benchmark/tasks/ch_python_github_archive"
+    },
+    "source": "tasks",
+    "task_checksum": "54b70860c86de10a7a302e6a6f6968f91189896afe60efb58874fcf9f1bc2bf6",
+    "config": {
+        "task": {
+            "path": "/home/kw/code/zealt/clickhouse-benchmark/tasks/ch_python_github_archive",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": "tasks"
+        },
+        "trial_name": "ch_python_github_archive__ppCwKwR",
+        "trials_dir": "jobs/2026-04-23__02-24-35",
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": null,
+            "import_path": "agents.pochi:Pochi",
+            "model_name": "google/gemini-3-flash",
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "kwargs": {},
+            "env": {}
+        },
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": REDACTED,
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "suppress_override_warnings": false,
+            "mounts_json": null,
+            "env": {},
+            "kwargs": {}
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": false
+        },
+        "artifacts": [],
+        "job_id": "a3e2878e-ad81-43b9-9b35-2e3bfd485c72"
+    },
+    "agent_info": {
+        "name": "pochi",
+        "version": "\u001b[37m2026-04-22 18:43:03.124\u001b[39m\u001b[0m\u001b[0m\t\u001b[32m\u001b[1mDEBUG\u001b[22m\u001b[39m\u001b[0m\u001b[0m\t\u001b[37m$bunfs/root/pochi:441974\u001b[39m\u001b[0m\u001b[0m\u001b[1m\u001b[37m\tPochiConfigManager\u001b[39m\u001b[22m\u001b[0m\u001b[0m\tFailed to load config file\n\n\u001b[97m\u001b[101m\u001b[1m Error \u001b[22m\u001b[49m\u001b[39m\u001b[0m\u001b[0m ENOENT: no such file or directory, open '/root/.pochi/config.jsonc', ENOENT, /root/.pochi/config.jsonc, open, -2, 441979, 38, 441979, 38, /$bunfs/root/pochi\u001b[0m\u001b[0m\nerror stack:\n  • \u001b[33m\u001b[39m\u001b[0m\u001b[0m\t\u001b[0m\u001b[0m\n\t\u001b[37m\u001b[39m\u001b[0m\u001b[0m\n  • \u001b[33mpochi\u001b[39m\u001b[0m\u001b[0m\tload\u001b[0m\u001b[0m\n\t\u001b[37m$bunfs/root/pochi:441979\u001b[39m\u001b[0m\u001b[0m\n  • \u001b[33mpochi\u001b[39m\u001b[0m\u001b[0m\tnew PochiConfigFile\u001b[0m\u001b[0m\n\t\u001b[37m$bunfs/root/pochi:441974\u001b[39m\u001b[0m\u001b[0m\n  • \u001b[33mpochi\u001b[39m\u001b[0m\u001b[0m\tnew PochiConfigManager\u001b[0m\u001b[0m\n\t\u001b[37m$bunfs/root/pochi:442096\u001b[39m\u001b[0m\u001b[0m\n  • \u001b[33mpochi\u001b[39m\u001b[0m\u001b[0m\t\u001b[0m\u001b[0m\n\t\u001b[37m$bunfs/root/pochi:442217\u001b[39m\u001b[0m\u001b[0m\n  • \u001b[33mnative\u001b[39m\u001b[0m\u001b[0m\tmoduleEvaluation\u001b[0m\u001b[0m\n\t\u001b[37mnative:1\u001b[39m\u001b[0m\u001b[0m\n  • \u001b[33mnative\u001b[39m\u001b[0m\u001b[0m\tmoduleEvaluation\u001b[0m\u001b[0m\n\t\u001b[37mnative:1\u001b[39m\u001b[0m\u001b[0m\n  • \u001b[33m\u001b[39m\u001b[0m\u001b[0m\t\u001b[0m\u001b[0m\n\t\u001b[37m\u001b[39m\u001b[0m\u001b[0m\u001b[0m\u001b[0m\n\u001b[37m2026-04-22 18:43:03.360\u001b[39m\u001b[0m\u001b[0m\t\u001b[32m\u001b[1mDEBUG\u001b[22m\u001b[39m\u001b[0m\u001b[0m\t\u001b[37mnative:1\u001b[39m\u001b[0m\u001b[0m\u001b[1m\u001b[37m\tPochi\u001b[39m\u001b[22m\u001b[0m\u001b[0m\tpochi v0.6.8\n0.6.8\n\u001b[37m2026-04-22 18:43:03.363\u001b[39m\u001b[0m\u001b[0m\t\u001b[32m\u001b[1mDEBUG\u001b[22m\u001b[39m\u001b[0m\u001b[0m\t\u001b[37m\u001b[39m\u001b[0m\u001b[0m\u001b[1m\u001b[37m\tPochi\u001b[39m\u001b[22m\u001b[0m\u001b[0m\tProcess exiting with code 0",
+        "model_info": {
+            "name": "gemini-3-flash",
+            "provider": "google"
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": 0,
+        "n_cache_tokens": 0,
+        "n_output_tokens": 32172,
+        "cost_usd": null,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 1.0
+        }
+    },
+    "exception_info": null,
+    "started_at": "2026-04-22T18:42:23.487728Z",
+    "finished_at": "2026-04-22T18:50:58.584592Z",
+    "environment_setup": {
+        "started_at": "2026-04-22T18:42:23.488410Z",
+        "finished_at": "2026-04-22T18:42:43.540413Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-04-22T18:42:43.540423Z",
+        "finished_at": "2026-04-22T18:43:03.383077Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-04-22T18:43:03.383121Z",
+        "finished_at": "2026-04-22T18:50:38.863853Z"
+    },
+    "verifier": {
+        "started_at": "2026-04-22T18:50:38.871255Z",
+        "finished_at": "2026-04-22T18:50:42.655580Z"
+    }
+}
