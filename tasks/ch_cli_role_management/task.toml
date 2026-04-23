@@ -1,0 +1,17 @@
+[environment]
+image = "ch_cli_role_management_env"
+build_context = "environment"
+
+[environment.env]
+POCHI_API_KEY = "${POCHI_API_KEY}"
+POCHI_LOG = "debug"
+
+[execution]
+timeout = 300
+
+[verifier]
+timeout = 60
+
+[verifier.env]
+POCHI_API_KEY = "${POCHI_API_KEY}"
+POCHI_LOG = "debug"
