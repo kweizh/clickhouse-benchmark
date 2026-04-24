@@ -1,5 +1,473 @@
 1:"$Sreact.fragment"
-2:I[75049,["/clickhouse-benchmark/_next/static/chunks/d2c13bb33c4fcd54.js","/clickhouse-benchmark/_next/static/chunks/c21188132e0e0d48.js"],"OutletBoundary"]
-3:"$Sreact.suspense"
-0:{"buildId":"bG4uQHEJMDehOagj_UtOw","rsc":["$","$1","c",{"children":[["$","div",null,{"className":"min-h-screen bg-background text-foreground font-sans selection:bg-primary/20","children":[["$","div",null,{"className":"fixed inset-0 -z-10 h-full w-full bg-background bg-[radial-gradient(#2a2a2a_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20 dark:opacity-40"}],["$","div",null,{"className":"container mx-auto px-4 sm:px-8 lg:px-12 py-8 max-w-screen-2xl h-[100dvh] flex flex-col overflow-hidden","children":[["$","div",null,{"className":"mb-6 space-y-4 shrink-0","children":[["$","div",null,{"className":"flex items-center gap-4","children":["$","a",null,{"href":"/","className":"text-sm text-muted-foreground hover:text-foreground transition-colors","children":"← Back to Leaderboard"}]}],["$","div",null,{"children":["$","h1",null,{"className":"text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/50","children":"Task"}]}]]}],["$","div",null,{"className":"relative overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/10 via-card/90 to-background/90 px-5 pb-10 pt-6 text-center shadow-[0_0_0_1px_hsl(var(--primary)/0.18),0_28px_72px_-32px_hsl(var(--foreground)/0.45)] backdrop-blur-sm sm:px-8 sm:pb-14 sm:pt-8","children":[["$","div",null,{"className":"pointer-events-none absolute -right-16 -top-16 h-36 w-36 rounded-full bg-primary/20 blur-3xl sm:-right-14 sm:-top-14 sm:h-40 sm:w-40"}],["$","div",null,{"className":"pointer-events-none absolute -left-20 bottom-0 h-32 w-32 rounded-full bg-foreground/10 blur-3xl sm:h-36 sm:w-36"}],["$","div",null,{"className":"relative mx-auto mb-8 inline-flex items-center rounded-full border border-primary/40 bg-primary/15 px-3 py-1 text-xs font-semibold tracking-[0.12em] text-foreground sm:text-sm sm:tracking-[0.16em]","children":"⏳ PIPELINE PENDING REVIEW"}],["$","p",null,{"className":"relative mx-auto max-w-2xl px-4 text-center text-lg font-semibold tracking-wide text-foreground sm:px-5 sm:text-xl","children":[6," sample cases generated — pending review"]}],["$","p",null,{"className":"relative mx-auto mt-2 max-w-2xl px-4 text-left text-sm leading-relaxed text-muted-foreground sm:px-5","children":"Your sample cases are ready. Before moving forward, we do a quick review together to make sure everything looks right and aligns with real-world usage."}],["$","div",null,{"className":"relative mx-auto mt-8 max-w-2xl rounded-xl bg-primary/10 px-4 py-4 text-left sm:px-5","children":[["$","p",null,{"className":"text-base font-semibold text-foreground sm:text-lg text-center","children":"Next step: join Slack for review"}],["$","p",null,{"className":"mt-1 text-sm leading-relaxed text-muted-foreground","children":"We've sent you a Slack invitation to your registered email with Zealt. Please join and we'll walk through the next step together."}],["$","p",null,{"className":"mt-3 text-xs text-muted-foreground","children":["If you don't see it, just reach out at"," ",["$","a",null,{"href":"mailto:zealtdev@tabbyml.com","className":"font-normal text-foreground underline decoration-primary/60 underline-offset-4 hover:text-primary transition-colors","children":"zealtdev@tabbyml.com"}],"."]}]]}]]}]]}]]}],[["$","script","script-0",{"src":"/clickhouse-benchmark/_next/static/chunks/8db7552398001a94.js","async":true}],["$","script","script-1",{"src":"/clickhouse-benchmark/_next/static/chunks/be08138953094657.js","async":true}]],["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"loading":null,"isPartial":false}
-4:null
+2:I[42654,["/clickhouse-benchmark/_next/static/chunks/ca023ad85cd7aeee.js","/clickhouse-benchmark/_next/static/chunks/2ad5122eae704b1a.js","/clickhouse-benchmark/_next/static/chunks/8db7552398001a94.js","/clickhouse-benchmark/_next/static/chunks/be08138953094657.js"],"TasksPageClient"]
+1a:I[75049,["/clickhouse-benchmark/_next/static/chunks/d2c13bb33c4fcd54.js","/clickhouse-benchmark/_next/static/chunks/c21188132e0e0d48.js"],"OutletBoundary"]
+1b:"$Sreact.suspense"
+3:T485,# ClickHouse Cloud Backup Configuration Script
+
+## Background
+ClickHouse Cloud provides a Management API to manage service lifecycles and backups. You need to write a bash script that interacts with the ClickHouse Cloud Management API to configure a custom backup schedule and retention policy for a specific service.
+
+## Requirements
+- Write a bash script named `configure_backup.sh` in the project directory.
+- The script must accept four environment variables: `CH_API_KEY_ID`, `CH_API_KEY_SECRET`, `CH_ORG_ID`, and `CH_SERVICE_ID`.
+- It must use `curl` to send a `PATCH` request to the ClickHouse Cloud Management API (`https://api.clickhouse.cloud/v1/organizations/${CH_ORG_ID}/services/${CH_SERVICE_ID}/backupConfiguration`).
+- The JSON payload should set the `startTime` field to `"00:00"` and the `retention` field to `7`.
+- The script must use Basic Authentication with the provided API key ID and secret.
+- The script must be executable.
+
+## Constraints
+- Project path: `/home/user/ch-backup`
+- Log file: `/home/user/ch-backup/output.log`
+- Do not execute the script; just create it and ensure it is correct and executable.
+
+## Integrations
+- None4:T672,# Update ClickHouse Cloud IP Access List
+
+## Background
+You need to automate adding new IP addresses to a ClickHouse Cloud service's IP Access List using the Cloud Management API.
+
+## Requirements
+- Create a bash script `update_ip_list.sh` that takes two arguments: an IP CIDR (e.g., `10.0.0.0/8`) and a description.
+- The script must use `curl` to send a `PATCH` request to the ClickHouse Cloud Management API to add the given IP to the access list.
+- The script must read `CLICKHOUSE_ORG_ID`, `CLICKHOUSE_SERVICE_ID`, `CLICKHOUSE_KEY_ID`, and `CLICKHOUSE_KEY_SECRET` from environment variables.
+- The script must use the base URL from the `CLICKHOUSE_API_URL` environment variable, defaulting to `https://api.clickhouse.cloud/v1` if not set.
+- The script must use Basic Authentication with `KEY_ID:KEY_SECRET`.
+- The API endpoint is `${CLICKHOUSE_API_URL}/organizations/${CLICKHOUSE_ORG_ID}/services/${CLICKHOUSE_SERVICE_ID}`.
+- The JSON payload must follow the format: `{"ipAccessList": {"add": [{"source": "<IP>", "description": "<DESC>"}]}}`.
+- The script must be executable.
+
+## Implementation Guide
+1. Read the IP CIDR and description from arguments (`$1` and `$2`).
+2. Set up the `CLICKHOUSE_API_URL` variable (default to `https://api.clickhouse.cloud/v1`).
+3. Use `curl -s -X PATCH` with `--user "${CLICKHOUSE_KEY_ID}:${CLICKHOUSE_KEY_SECRET}"` and `-H "Content-Type: application/json"`.
+4. Send the correct JSON payload with `-d`.
+5. Output the curl response to `/home/user/ch-cli/output.log`.
+
+## Constraints
+- Project path: /home/user/ch-cli
+- Log file: /home/user/ch-cli/output.log
+- Do not hardcode any credentials or IDs in the script.5:T507,# ClickHouse Cloud Role and Key Management
+
+## Background
+You need to write a bash script to automate managing API keys and invitations in ClickHouse Cloud using `clickhousectl`.
+
+## Requirements
+- Create a bash script at `/home/user/ch-task/manage.sh`.
+- The script should take three arguments: an email address, a role ID, and an API key name.
+- It must use `clickhousectl` to:
+  1. Create an invitation for the provided email address with the provided role ID.
+  2. Create an API key with the provided API key name and the provided role ID.
+- The script should output the results in JSON format by passing the `--json` flag to `clickhousectl`.
+- Ensure the script is executable.
+
+## Implementation Guide
+1. Create the script `/home/user/ch-task/manage.sh`.
+2. Add `#!/bin/bash` at the top.
+3. Read the arguments: `EMAIL=$1`, `ROLE_ID=$2`, `KEY_NAME=$3`.
+4. Execute `clickhousectl cloud --json invitation create --email "$EMAIL" --role-id "$ROLE_ID"`.
+5. Execute `clickhousectl cloud --json key create --name "$KEY_NAME" --role-id "$ROLE_ID"`.
+6. Make the script executable (`chmod +x`).
+
+## Constraints
+- Project path: /home/user/ch-task
+- The script must exactly match the argument order: email, role ID, key name.
+- Do not hardcode the arguments.
+
+## Integrations
+- ClickHouse Cloud6:T47a,# ClickHouse Cloud Analytics API
+
+## Background
+You need to build a real-time analytics backend for a dashboard using Node.js, Express, and ClickHouse Cloud.
+
+## Requirements
+- Initialize a Node.js project in `/home/user/analytics-api`.
+- Install `express` and the official `@clickhouse/client` SDK.
+- Create an `index.js` file that starts an Express server on port 3000.
+- Connect to ClickHouse Cloud using the following environment variables:
+  - `CLICKHOUSE_URL` (e.g. `https://your-host.clickhouse.cloud:8443` or `http://localhost:8123`)
+  - `CLICKHOUSE_USER`
+  - `CLICKHOUSE_PASSWORD`
+- Note: ClickHouse Cloud strictly requires TLS/HTTPS for connections, so your code should use the URL provided in `CLICKHOUSE_URL` which will include the correct protocol.
+- Implement a GET `/metrics` endpoint that queries ClickHouse for `SELECT count() AS total_parts FROM system.parts` and returns the result as JSON in the format `{"total_parts": <number>}`.
+- Ensure proper error handling and return a 500 status code if the database query fails.
+
+## Constraints
+- Project path: `/home/user/analytics-api`
+- Start command: `node index.js`
+- Port: 3000
+7:T4f6,# Bulk Load CSV to ClickHouse Cloud via Node.js
+
+## Background
+You need to build a Node.js script that connects to a ClickHouse Cloud instance, creates a table, and bulk loads data from a CSV file using the official `@clickhouse/client` SDK.
+
+## Requirements
+- Initialize a Node.js project in `/home/user/ch-task`.
+- Install the `@clickhouse/client` package.
+- Write a script `index.js` that:
+  1. Connects to ClickHouse Cloud using the `CLICKHOUSE_HOST` and `CLICKHOUSE_PASSWORD` environment variables. The host URL must use HTTPS and port 8443 (e.g., `https://${process.env.CLICKHOUSE_HOST}:8443`). Use `default` as the username.
+  2. Creates a table named `employees` (if it doesn't exist) with the following schema: `id UInt32`, `name String`, `department String`, `salary Float64`. Use the `MergeTree` engine ordered by `id`.
+  3. Reads the file `/home/user/ch-task/employees.csv` as a stream and inserts it into the `employees` table using the `CSVWithNames` format.
+  4. Writes the text `Success` to `/home/user/ch-task/output.log` upon completion.
+- Execute your script so the data is loaded.
+
+## Constraints
+- Project path: `/home/user/ch-task`
+- Log file: `/home/user/ch-task/output.log`
+- The script must handle the CSV header properly (using `CSVWithNames`).8:T589,# ClickHouse Data Dictionary Extractor
+
+## Background
+You need to write a Node.js script that connects to ClickHouse Cloud using the official `@clickhouse/client` SDK and extracts a data dictionary (schema information) from the system tables.
+
+## Requirements
+- Initialize a Node.js project in `/home/user/ch_project`.
+- Install `@clickhouse/client`.
+- Create a script named `extract_dict.js` that connects to the ClickHouse Cloud instance.
+- The script must read connection details from the following environment variables:
+  - `CLICKHOUSE_HOST` (e.g., `https://your-host.clickhouse.cloud:8443`)
+  - `CLICKHOUSE_PASSWORD`
+- The user is implicitly `default`.
+- Query the `system.columns` table to extract the `database`, `table`, `name` (column name), and `type` (column type) for all tables in the `system` database.
+- Save the extracted data as a JSON array to `/home/user/ch_project/dictionary.json`.
+- Run the script to generate the file.
+
+## Implementation Guide
+1. `cd /home/user/ch_project`
+2. `npm init -y` and `npm install @clickhouse/client`
+3. Write `extract_dict.js` to connect to ClickHouse and query `system.columns` where `database = 'system'`.
+4. Format the output as a JSON array of objects and write to `dictionary.json`.
+5. Run `node extract_dict.js`.
+
+## Constraints
+- Project path: /home/user/ch_project
+- Output file: /home/user/ch_project/dictionary.json
+- Use `@clickhouse/client` for Node.js.9:T51d,# Configure ClickHouse for Grafana using Node.js
+
+## Background
+You need to prepare a ClickHouse database for Grafana to use as a data source. You will write a Node.js script that uses the `@clickhouse/client` SDK to set up the schema and a dedicated read-only user.
+
+## Requirements
+- Write a script named `setup_grafana.js` in `/home/user/project`.
+- The script must connect to ClickHouse at `http://localhost:8123` using the default user (no password).
+- It must create a database named `grafana_db`.
+- It must create a table `grafana_db.metrics` with columns: `timestamp` (DateTime), `metric_name` (String), and `value` (Float64). The engine must be `MergeTree` ordered by `(metric_name, timestamp)`.
+- It must create a user `grafana_user` with password `grafana_pass`.
+- It must grant `SELECT` privilege on `grafana_db.metrics` to `grafana_user`.
+- The script should execute these commands sequentially and exit successfully.
+
+## Implementation Guide
+1. Initialize a Node.js project in `/home/user/project` and install `@clickhouse/client`.
+2. Write `setup_grafana.js`.
+3. Use `client.command()` to execute the DDL statements.
+4. Ensure you await all operations.
+
+## Constraints
+- Project path: `/home/user/project`
+- The ClickHouse server is already running locally on port 8123.
+
+## Integrations
+- Nonea:T52a,# ClickHouse Cloud Node.js REST API
+
+## Background
+Create a REST API using Express and `@clickhouse/client` that connects to ClickHouse Cloud and exposes an endpoint to query system tables.
+
+## Requirements
+- Initialize a Node.js project in `/home/user/ch_api`.
+- Install `express` and `@clickhouse/client`.
+- Create a server that listens on port 3000.
+- Connect to ClickHouse Cloud using environment variables: `CLICKHOUSE_HOST` and `CLICKHOUSE_PASSWORD`. The username should default to `default`.
+- Implement a `GET /tables` endpoint that queries `SELECT name FROM system.tables LIMIT 5` and returns the results as a JSON array.
+
+## Implementation Guide
+1. Create the project directory `/home/user/ch_api` and initialize it with `npm init -y`.
+2. Install the required packages.
+3. Create an `index.js` file with the Express server and ClickHouse client configuration.
+4. Ensure the client uses the HTTPS port (8443) by default if not specified in the host, or just pass the host URL directly as expected by `@clickhouse/client`.
+5. Start the server on port 3000.
+
+## Constraints
+- Project path: `/home/user/ch_api`
+- Start command: `node index.js`
+- Port: 3000
+- MUST use environment variables `CLICKHOUSE_HOST` and `CLICKHOUSE_PASSWORD` for connection.
+- The server should handle potential connection errors gracefully.b:T53d,# ClickHouse Async Insert via Python
+
+## Background
+When ingesting data into ClickHouse, performance can degrade if many small inserts are performed. Using the Async Inserts feature allows ClickHouse to batch these small inserts server-side. You will write a Python script using the official `clickhouse-connect` SDK to demonstrate this.
+
+## Requirements
+- Create a Python script at `/home/user/project/async_insert.py`.
+- The script must connect to a local ClickHouse instance at `localhost:8123` (username `default`, no password).
+- Create a table named `async_table` with columns `id UInt64` and `data String`, using `MergeTree` engine ordered by `id`.
+- Insert at least 5 rows of data into `async_table` using the `insert` method.
+- You MUST enable Async Inserts for the ingestion by passing the appropriate settings (`async_insert=1` and `wait_for_async_insert=1`) in the insert call or connection.
+
+## Implementation Guide
+1. Ensure `clickhouse-connect` is installed.
+2. Write the script to connect to the database.
+3. Execute `CREATE TABLE IF NOT EXISTS async_table (id UInt64, data String) ENGINE = MergeTree ORDER BY id`.
+4. Call `client.insert` with the data and the settings `{'async_insert': 1, 'wait_for_async_insert': 1}`.
+
+## Constraints
+- Project path: `/home/user/project`
+- Script path: `/home/user/project/async_insert.py`c:T5c2,# ClickHouse Cloud Python Cold Start Handler
+
+## Background
+ClickHouse Cloud services may "pause" when idle. The first request after a pause may experience higher latency (a cold start). To handle this gracefully, applications must configure their database clients with increased timeouts.
+
+## Requirements
+- Create a Python script `/home/user/ch-project/query.py` that connects to a ClickHouse server and executes a simple query: `SELECT 1`.
+- You must use the official `clickhouse-connect` library.
+- The client must be configured to handle potential cold starts by setting `connect_timeout` to 30 seconds and `send_receive_timeout` to 120 seconds.
+- The script should print the result of the query to the standard output.
+
+## Implementation Guide
+1. Ensure `clickhouse-connect` is installed or install it if necessary.
+2. Create the script at `/home/user/ch-project/query.py`.
+3. In the script, read the connection details from the environment variables: `CH_HOST`, `CH_PORT`, `CH_USER`, and `CH_PASSWORD`.
+4. Initialize the `clickhouse_connect` client with these credentials and the required timeout settings (`connect_timeout=30`, `send_receive_timeout=120`).
+5. Execute the query `SELECT 1` and print the result.
+
+## Constraints
+- Project path: /home/user/ch-project
+- The script must use `clickhouse-connect`.
+- The script must read credentials from environment variables.
+- The script must configure `connect_timeout` and `send_receive_timeout` exactly as specified.d:T5df,# Ingest GitHub Archive into ClickHouse Cloud
+
+## Background
+You need to write a Python script to ingest GitHub Archive events into ClickHouse Cloud using the official `clickhouse-connect` Python SDK. The GitHub Archive dataset contains public events from GitHub, and you'll be fetching a single hour of data.
+
+## Requirements
+- Create a Python script `/home/user/ch-task/ingest.py`.
+- The script must read connection details from the following environment variables: `CLICKHOUSE_HOST`, `CLICKHOUSE_PORT`, `CLICKHOUSE_USERNAME`, `CLICKHOUSE_PASSWORD`.
+- Connect to ClickHouse using `clickhouse-connect`.
+- Create a table named `github_events` with the `MergeTree` engine ordered by `id`. The table schema must include at least: `id String`, `type String`, `actor JSON`, `repo JSON`, `payload JSON`, `public UInt8`, `created_at DateTime`.
+- Ingest the data from `https://data.gharchive.org/2015-01-01-15.json.gz` into the `github_events` table. You can use ClickHouse's `url()` table function to do this efficiently.
+- After ingestion, write the total row count of the `github_events` table to a log file.
+
+## Implementation Guide
+1. Install `clickhouse-connect`.
+2. Write `/home/user/ch-task/ingest.py`.
+3. Execute the script.
+4. Write the row count to `/home/user/ch-task/output.log`.
+
+## Constraints
+- Project path: /home/user/ch-task
+- Log file: /home/user/ch-task/output.log
+- Use `clickhouse-connect` for all database interactions.
+- The table must be named `github_events`.
+
+## Integrations
+- Nonee:T5ff,# ClickHouse Python Query Benchmark
+
+## Background
+You need to benchmark query performance on a ClickHouse database using the official Python SDK `clickhouse-connect`.
+
+## Requirements
+- Initialize a Python project in `/home/user/ch_benchmark`.
+- Install the `clickhouse-connect` library.
+- Write a Python script `benchmark.py` that connects to a ClickHouse database using the following environment variables:
+  - `CH_HOST` (e.g., localhost)
+  - `CH_PORT` (e.g., 8123)
+  - `CH_USER` (e.g., default)
+  - `CH_PASSWORD` (e.g., empty string)
+  - `CH_SECURE` (e.g., 'True' or 'False', parse to boolean)
+- The script must perform the following operations sequentially:
+  1. Create a table `events` (`id UInt64`, `event_type String`, `timestamp DateTime`) `ENGINE = MergeTree ORDER BY id`.
+  2. Insert exactly 1000 rows into the `events` table (e.g., `id` from 1 to 1000, `event_type` as 'click', 'view', or 'purchase', and `timestamp` as the current time).
+  3. Execute the query `SELECT event_type, count() FROM events GROUP BY event_type`.
+  4. Record the query execution time (in seconds).
+  5. Write the output to `/home/user/ch_benchmark/output.json` in exactly this JSON format: `{"time_seconds": 0.05, "results": [["click", 330], ["view", 340], ["purchase", 330]]}`.
+- Run the script and ensure `output.json` is generated.
+
+## Constraints
+- Project path: `/home/user/ch_benchmark`
+- Log file: `/home/user/ch_benchmark/output.log`
+- The database connection must use the environment variables as specified. Do not hardcode credentials.
+f:T675,# ClickHouse Cloud S3 Parquet Ingestion
+
+## Background
+You need to ingest data from a public S3 Parquet file into a ClickHouse Cloud cluster using the official Python SDK (`clickhouse-connect`).
+
+## Requirements
+- Create a Python script `/home/user/app/load_s3.py`.
+- The script must connect to ClickHouse Cloud using the environment variables `CH_HOST`, `CH_PORT`, `CH_USER`, and `CH_PASSWORD`.
+- The script must create a table named `amazon_reviews` (if it does not exist) with the `MergeTree` engine, ordered by `review_id`.
+- The schema for `amazon_reviews` should have at least these columns: `review_id` (String), `product_id` (String), and `star_rating` (UInt8).
+- The script must use the `s3()` table function to read data from `https://datasets-documentation.s3.eu-west-3.amazonaws.com/amazon_reviews/amazon_reviews_2010.snappy.parquet` and insert exactly 10 rows into `amazon_reviews`.
+- Only select the `review_id`, `product_id`, and `star_rating` columns from the S3 file.
+- The connection must use HTTPS (`secure=True` in `clickhouse-connect`).
+
+## Implementation Guide
+1. Use `os.environ` to get `CH_HOST`, `CH_PORT`, `CH_USER`, and `CH_PASSWORD`.
+2. Initialize `clickhouse_connect.get_client(...)` with `secure=True`.
+3. Execute a `CREATE TABLE IF NOT EXISTS` statement.
+4. Execute an `INSERT INTO amazon_reviews SELECT review_id, product_id, star_rating FROM s3(...) LIMIT 10` statement.
+
+## Constraints
+- Project path: `/home/user/app`
+- The script must be executable via `python3 /home/user/app/load_s3.py`.
+- The script should not print anything on success, or exit with a non-zero status on error.
+
+## Integrations
+- ClickHouse Cloud10:T66e,# ClickHouse Cloud Schema Migration
+
+## Background
+You need to manage schema changes for a ClickHouse Cloud database using the official Python SDK (`clickhouse-connect`). Your task is to write a Python script that ensures the `users` table exists and has the correct schema, applying an `ALTER TABLE` to add a missing column if necessary.
+
+## Requirements
+- Write a Python script `migrate.py` in the project directory.
+- The script must connect to ClickHouse Cloud using the following environment variables: `CLICKHOUSE_HOST`, `CLICKHOUSE_PORT` (default 8443), `CLICKHOUSE_USER` (default 'default'), and `CLICKHOUSE_PASSWORD`.
+- Ensure a table named `users` exists. If it doesn't, create it with the following schema: `id UInt64, username String`, using the `MergeTree` engine ordered by `id`.
+- Ensure the `users` table has a `last_login` column of type `DateTime`. If it doesn't exist, use `ALTER TABLE` to add it.
+- Log the actions taken (e.g., 'Table created', 'Column added') to `migration.log`.
+
+## Implementation Guide
+1. Read the connection details from environment variables.
+2. Connect using `clickhouse_connect.get_client(host=..., port=..., username=..., password=..., secure=True)`.
+3. Execute `CREATE TABLE IF NOT EXISTS users (id UInt64, username String) ENGINE = MergeTree ORDER BY id`.
+4. Execute `ALTER TABLE users ADD COLUMN IF NOT EXISTS last_login DateTime`.
+5. Write a success message to `/home/user/ch-migration/migration.log`.
+
+## Constraints
+- Project path: `/home/user/ch-migration`
+- Log file: `/home/user/ch-migration/migration.log`
+- The script must be idempotent (safe to run multiple times).
+
+## Integrations
+- None11:T479,# Node.js Streaming Query Execution
+
+## Background
+The Node.js `@clickhouse/client` SDK is commonly used to build backend APIs that stream analytical data efficiently using formats like `JSONEachRow`.
+
+## Requirements
+You need to create a Node.js script (`query.js`) that connects to ClickHouse Cloud, queries the `system.tables` table, and streams the results to standard output in JSON format.
+
+## Implementation
+1. Initialize a Node.js project in `/home/user/myproject`.
+2. Install `@clickhouse/client`.
+3. Create `query.js`.
+4. Connect to ClickHouse Cloud using the provided credentials from environment variables (`CLICKHOUSE_HOST`, `CLICKHOUSE_USER`, `CLICKHOUSE_PASSWORD`).
+5. Query `system.tables` using `format: 'JSONEachRow'`.
+6. Process the streaming response properly and log the fully parsed JSON array to the console.
+7. Run the script and redirect the output to `/home/user/myproject/output.log`.
+
+## Constraints
+- Project path: `/home/user/myproject`
+- Log file: `/home/user/myproject/output.log`
+- You must establish the connection over HTTPS using port `8443`.
+- The query execution method must specify `format: 'JSONEachRow'`.12:T672,# S3 Data Ingestion with ClickHouse Python SDK
+
+## Background
+ClickHouse Cloud excels at querying external data lakes. The `s3()` table function allows seamless reading from S3-compatible object storage. In this task, you will write a Python script using the official HTTP client (`clickhouse-connect`) to ingest a public CSV dataset from S3 into a native ClickHouse MergeTree table.
+
+## Requirements
+- Write a Python script at `/home/user/ingest.py`.
+- Connect to ClickHouse Cloud using credentials from environment variables: `CLICKHOUSE_HOST`, `CLICKHOUSE_PORT`, `CLICKHOUSE_USER`, and `CLICKHOUSE_PASSWORD`. Connection must be secure (`secure=True`).
+- Create a table named `aapl_stock` (if it does not exist) with the following schema:
+  - `Date` Date
+  - `Open` Float64
+  - `High` Float64
+  - `Low` Float64
+  - `Close` Float64
+  - `Volume` UInt64
+  - `OpenInt` UInt64
+- The table should use the `MergeTree` engine, ordered by `Date`.
+- Insert data into the `aapl_stock` table by reading directly from this public S3 URL: `https://datasets-documentation.s3.eu-west-3.amazonaws.com/aapl_stock.csv`. Use the `s3()` table function with the `CSVWithNames` format.
+
+## Implementation Guide
+1. Ensure `clickhouse-connect` is installed.
+2. In `/home/user/ingest.py`, use `clickhouse_connect.get_client` to establish a connection.
+3. Execute a `CREATE TABLE` command for the `aapl_stock` table.
+4. Execute an `INSERT INTO ... SELECT * FROM s3(...)` command to load the data.
+5. Print the number of rows inserted or a success message.
+
+## Constraints
+- Project path: `/home/user`
+- The script must be executable by running `python3 /home/user/ingest.py`.13:T488,# ClickHouse Python Schema Migration Tool
+
+## Background
+Create a simple schema migration tool in Python using `clickhouse-connect` that applies SQL migration scripts to a ClickHouse Cloud service.
+
+## Requirements
+- Connect to ClickHouse using `clickhouse-connect`.
+- Read all `.sql` files from a `migrations` directory.
+- Execute each SQL file in alphabetical order.
+- Record applied migrations in a `schema_migrations` table (columns: `version` String, `applied_at` DateTime).
+- Skip migrations that have already been applied.
+
+## Implementation
+1. Initialize a Python project in `/home/user/project`.
+2. Install `clickhouse-connect`.
+3. Create a `migrate.py` script that implements the logic.
+4. Create a `migrations` directory with two files: `01_create_users.sql` (creates a `users` table with `id` UInt64 and `name` String) and `02_add_email.sql` (adds an `email` String column to the `users` table).
+
+## Constraints
+- Project path: `/home/user/project`
+- The ClickHouse credentials will be provided via environment variables: `CLICKHOUSE_HOST`, `CLICKHOUSE_PORT`, `CLICKHOUSE_USER`, `CLICKHOUSE_PASSWORD`.
+- Log file: `/home/user/project/migration.log`14:T5dc,# ClickHouse Schema Migration with Python
+
+## Background
+You need to build a simple schema migration script using the official Python SDK `clickhouse-connect`. The script will ensure a specific table schema exists in ClickHouse Cloud and apply an `ALTER TABLE` migration if a column is missing.
+
+## Requirements
+- Connect to ClickHouse Cloud using credentials from environment variables: `CLICKHOUSE_HOST`, `CLICKHOUSE_PORT` (default 8443), `CLICKHOUSE_USER` (default 'default'), and `CLICKHOUSE_PASSWORD`.
+- Ensure a table named `users` exists with the engine `MergeTree` ordered by `id`. The initial schema should be `id UInt64, name String`.
+- Detect if the `email` column (type `String`) exists in the `users` table.
+- If the `email` column is missing, apply a migration to add it: `ALTER TABLE users ADD COLUMN email String`.
+- Insert a test record with `id=1`, `name='Alice'`, and `email='alice@example.com'` into the `users` table.
+
+## Implementation Guide
+1. Create a Python script at `/home/user/migrate.py`.
+2. Use `clickhouse_connect.get_client` to establish a secure connection (`secure=True`).
+3. Use `client.command()` for DDL operations (CREATE, ALTER).
+4. Query `system.columns` to check if the `email` column exists for the `users` table.
+5. Use `client.insert()` to add the test record.
+
+## Constraints
+- Project path: `/home/user`
+- The script must be executable by running `python3 /home/user/migrate.py`.
+- Do not hardcode credentials; always read from the environment variables.15:T45d,# ClickHouse Schema Migration
+
+## Background
+Implement a simple Python script to perform schema migrations on ClickHouse Cloud using the official `clickhouse-connect` SDK.
+
+## Requirements
+- Write a Python script `migrate.py` that reads a `migrations.sql` file.
+- The script must connect to ClickHouse Cloud using the following environment variables: `CLICKHOUSE_HOST`, `CLICKHOUSE_PORT` (default 8443), `CLICKHOUSE_USERNAME` (default 'default'), and `CLICKHOUSE_PASSWORD`.
+- It should execute the SQL statements in the `migrations.sql` file sequentially.
+
+## Implementation Guide
+1. The project directory is `/home/user/myproject`.
+2. The file `/home/user/myproject/migrations.sql` is already provided.
+3. Install `clickhouse-connect`.
+4. Create `migrate.py` that uses `clickhouse_connect.get_client(host=..., port=..., username=..., password=..., secure=True)`.
+5. Read `migrations.sql`, split by `;`, and use `client.command()` to execute the DDL statements.
+6. Run the script and redirect output to `output.log`.
+
+## Constraints
+- Project path: `/home/user/myproject`
+- Log file: `/home/user/myproject/output.log`16:T41f,# ClickHouse System Metrics Dashboard
+
+## Background
+Create a simple Node.js Express dashboard that connects to ClickHouse Cloud and displays system metrics.
+
+## Requirements
+- Connect to ClickHouse Cloud using the `@clickhouse/client` SDK.
+- Create an Express API endpoint `/api/metrics` that runs `SELECT metric, value FROM system.metrics LIMIT 10` and returns the results as JSON.
+- Serve a static `index.html` at the root `/` that fetches data from `/api/metrics` and displays it in a list.
+- The ClickHouse connection must use the environment variables `CLICKHOUSE_HOST` and `CLICKHOUSE_PASSWORD`. The connection should be secure (HTTPS).
+
+## Implementation
+1. Initialize a Node.js project in `/home/user/dashboard`.
+2. Install `express` and `@clickhouse/client`.
+3. Create an `index.js` that sets up the Express server on port 3000 and serves static files from `public`.
+4. Create `public/index.html` with a script to fetch and display the metrics.
+
+## Constraints
+- Project path: `/home/user/dashboard`
+- Start command: `node index.js`
+- Port: 30000:{"buildId":"C1ChDEwASLwyKpjrPReI0","rsc":["$","$1","c",{"children":[["$","div",null,{"className":"min-h-screen bg-background text-foreground font-sans selection:bg-primary/20","children":[["$","div",null,{"className":"fixed inset-0 -z-10 h-full w-full bg-background bg-[radial-gradient(#2a2a2a_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20 dark:opacity-40"}],["$","$L2",null,{"tasksData":[{"taskName":"ch_cli_backup_config","instruction":"$3","trials":[{"job_name":"2026-04-23__02-24-35","trial_name":"ch_cli_backup_config__rxL2pu9","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":148.909,"latency_breakdown":{"env_setup":7.385,"agent_setup":14.49,"agent_exec":108.669,"verifier":3.47},"taskName":"ch_cli_backup_config","jobId":"rxL2pu9","exec_duration":108.669}]},{"taskName":"ch_cli_ip_access_list","instruction":"$4","trials":[{"job_name":"2026-04-23__02-24-35","trial_name":"ch_cli_ip_access_list__X6ju3pp","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":null,"error":true,"latency_sec":30.144,"latency_breakdown":{"env_setup":4.414,"agent_setup":10.99,"agent_exec":null,"verifier":null},"taskName":"ch_cli_ip_access_list","jobId":"X6ju3pp","exec_duration":30.144}]},{"taskName":"ch_cli_role_management","instruction":"$5","trials":[{"job_name":"2026-04-23__02-24-35","trial_name":"ch_cli_role_management__bgDSJmT","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":311.417,"latency_breakdown":{"env_setup":6.476,"agent_setup":19.808,"agent_exec":136.374,"verifier":134.412},"taskName":"ch_cli_role_management","jobId":"bgDSJmT","exec_duration":136.374}]},{"taskName":"ch_cli_service_deletion","instruction":"# ClickHouse Cloud Service Deletion Script\n\n## Background\nYou need to automate the deletion of a specific ClickHouse Cloud service using the official `clickhousectl` CLI tool.\n\n## Requirements\n- Write a bash script named `delete_service.sh` that accepts a service name as its first argument.\n- The script must use `clickhousectl cloud service list` to find the service ID associated with the provided service name.\n- The script must then delete the service using `clickhousectl cloud service delete <service-id>`.\n- If the service name is not found, the script should exit with an error message and code 1.\n- Make the script executable.\n\n## Constraints\n- **Project path**: /home/user\n- **Script path**: /home/user/delete_service.sh\n- Use `clickhousectl` for all interactions.\n- Do not hardcode the service ID.\n\n## Integrations\n- None","trials":[{"job_name":"2026-04-23__02-24-35","trial_name":"ch_cli_service_deletion__SqaL3Bn","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":641.751,"latency_breakdown":{"env_setup":5.183,"agent_setup":17.442,"agent_exec":592.58,"verifier":3.207},"taskName":"ch_cli_service_deletion","jobId":"SqaL3Bn","exec_duration":592.58}]},{"taskName":"ch_cli_status_checker","instruction":"# ClickHouse Service Status Checker\n\n## Background\nYou need to automate the monitoring of a ClickHouse service using the official `clickhouse-client` CLI.\n\n## Requirements\nWrite a bash script `check_status.sh` that retrieves the version of a ClickHouse service to verify it is running.\n- The script must use `clickhouse-client` to execute the query `SELECT version()`.\n- The output of the command must be saved to `status.log`.\n- The script must be executable.\n\n## Implementation Guide\n1. Create a script named `check_status.sh` in `/home/user/project`.\n2. Add the shebang `#!/bin/bash`.\n3. Run `clickhouse-client --query \"SELECT version()\" > /home/user/project/status.log`.\n4. Make the script executable with `chmod +x /home/user/project/check_status.sh`.\n\n## Constraints\n- Project path: `/home/user/project`\n- Log file: `/home/user/project/status.log`\n- You must use `clickhouse-client --query`.\n\n## Integrations\n- None","trials":[{"job_name":"2026-04-23__02-24-35","trial_name":"ch_cli_status_checker__AKHXYrF","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":212.199,"latency_breakdown":{"env_setup":4.082,"agent_setup":15.663,"agent_exec":173.845,"verifier":3.158},"taskName":"ch_cli_status_checker","jobId":"AKHXYrF","exec_duration":173.845}]},{"taskName":"ch_nodejs_analytics_api","instruction":"$6","trials":[{"job_name":"2026-04-23__02-24-35","trial_name":"ch_nodejs_analytics_api__ZJeACaQ","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":414.963,"latency_breakdown":{"env_setup":4.547,"agent_setup":18.454,"agent_exec":308.475,"verifier":65.739},"taskName":"ch_nodejs_analytics_api","jobId":"ZJeACaQ","exec_duration":308.475}]},{"taskName":"ch_nodejs_csv_load","instruction":"$7","trials":[{"job_name":"2026-04-23__02-24-35","trial_name":"ch_nodejs_csv_load__HL3xU7i","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":456.41,"latency_breakdown":{"env_setup":4.195,"agent_setup":16.823,"agent_exec":407.033,"verifier":4.33},"taskName":"ch_nodejs_csv_load","jobId":"HL3xU7i","exec_duration":407.033}]},{"taskName":"ch_nodejs_data_dictionary","instruction":"$8","trials":[{"job_name":"2026-04-23__02-24-35","trial_name":"ch_nodejs_data_dictionary__X8g55qs","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":199.757,"latency_breakdown":{"env_setup":10.405,"agent_setup":20.303,"agent_exec":140.366,"verifier":3.39},"taskName":"ch_nodejs_data_dictionary","jobId":"X8g55qs","exec_duration":140.366}]},{"taskName":"ch_nodejs_grafana_setup","instruction":"$9","trials":[{"job_name":"2026-04-23__02-24-35","trial_name":"ch_nodejs_grafana_setup__9UnvFvE","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":496.651,"latency_breakdown":{"env_setup":3.602,"agent_setup":18.008,"agent_exec":455.171,"verifier":3.484},"taskName":"ch_nodejs_grafana_setup","jobId":"9UnvFvE","exec_duration":455.171}]},{"taskName":"ch_nodejs_query_endpoint","instruction":"$a","trials":[{"job_name":"2026-04-23__02-24-35","trial_name":"ch_nodejs_query_endpoint__WtsbSvP","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":232.855,"latency_breakdown":{"env_setup":17.211,"agent_setup":20.471,"agent_exec":158.897,"verifier":5.506},"taskName":"ch_nodejs_query_endpoint","jobId":"WtsbSvP","exec_duration":158.897}]},{"taskName":"ch_python_async_insert","instruction":"$b","trials":[{"job_name":"2026-04-23__02-24-35","trial_name":"ch_python_async_insert__orX74a2","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":228.702,"latency_breakdown":{"env_setup":6.549,"agent_setup":18.192,"agent_exec":182.307,"verifier":5.378},"taskName":"ch_python_async_insert","jobId":"orX74a2","exec_duration":182.307}]},{"taskName":"ch_python_cold_start_handler","instruction":"$c","trials":[{"job_name":"2026-04-23__02-24-35","trial_name":"ch_python_cold_start_handler__Z7friwx","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":137.507,"latency_breakdown":{"env_setup":8.443,"agent_setup":17.537,"agent_exec":92.174,"verifier":3.283},"taskName":"ch_python_cold_start_handler","jobId":"Z7friwx","exec_duration":92.174}]},{"taskName":"ch_python_github_archive","instruction":"$d","trials":[{"job_name":"2026-04-23__02-24-35","trial_name":"ch_python_github_archive__ppCwKwR","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":515.097,"latency_breakdown":{"env_setup":20.052,"agent_setup":19.843,"agent_exec":455.48,"verifier":3.784},"taskName":"ch_python_github_archive","jobId":"ppCwKwR","exec_duration":455.48}]},{"taskName":"ch_python_query_tester","instruction":"$e","trials":[{"job_name":"2026-04-23__02-24-35","trial_name":"ch_python_query_tester__NN67SHC","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":306.517,"latency_breakdown":{"env_setup":9.461,"agent_setup":19.497,"agent_exec":256.194,"verifier":4.664},"taskName":"ch_python_query_tester","jobId":"NN67SHC","exec_duration":256.194}]},{"taskName":"ch_python_s3_parquet","instruction":"$f","trials":[{"job_name":"2026-04-23__02-24-35","trial_name":"ch_python_s3_parquet__TWxtFZA","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":106.029,"latency_breakdown":{"env_setup":4.881,"agent_setup":15.455,"agent_exec":66.964,"verifier":3.436},"taskName":"ch_python_s3_parquet","jobId":"TWxtFZA","exec_duration":66.964}]},{"taskName":"ch_python_schema_migration","instruction":"$10","trials":[{"job_name":"2026-04-23__02-24-35","trial_name":"ch_python_schema_migration__t6CiuGP","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":266.987,"latency_breakdown":{"env_setup":9.993,"agent_setup":16.404,"agent_exec":213.295,"verifier":3.786},"taskName":"ch_python_schema_migration","jobId":"t6CiuGP","exec_duration":213.295}]},{"taskName":"clickhouse_metrics_dashboard","instruction":"# ClickHouse Metrics Dashboard\n\n## Background\nCreate a simple Next.js web application that connects to ClickHouse Cloud and displays system metrics.\n\n## Requirements\n- Build a Next.js app that connects to ClickHouse using `@clickhouse/client`.\n- The app must display the total number of tables in the ClickHouse database by querying `SELECT count() as count FROM system.tables`.\n- The page must contain the text 'Total Tables:' followed by the count.\n\n## Implementation Guide\n1. A Next.js project is already initialized in `/home/user/app`.\n2. Install `@clickhouse/client` in `/home/user/app`.\n3. Update the main page (`app/page.js` or `pages/index.js`) to fetch the count of system tables from ClickHouse.\n4. Use the `CLICKHOUSE_HOST` and `CLICKHOUSE_PASSWORD` environment variables to connect. The host is HTTPS on port 8443 (e.g., `https://your-host:8443`). Username is `default`.\n\n## Constraints\n- **Project path**: `/home/user/app`\n- **Start command**: `npm run build && npm start`\n- **Port**: 3000","trials":[{"job_name":"2026-04-23__02-24-35","trial_name":"clickhouse_metrics_dashboard__xGLMGAu","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":992.667,"latency_breakdown":{"env_setup":7.602,"agent_setup":13.815,"agent_exec":293.716,"verifier":660.224},"taskName":"clickhouse_metrics_dashboard","jobId":"xGLMGAu","exec_duration":293.716}]},{"taskName":"node_js_streaming_query_execution","instruction":"$11","trials":[{"job_name":"2026-04-23__02-24-35","trial_name":"node_js_streaming_query_executio__ZVyXUnm","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":147.214,"latency_breakdown":{"env_setup":13.142,"agent_setup":21.782,"agent_exec":81.45,"verifier":3.326},"taskName":"node_js_streaming_query_executio","jobId":"ZVyXUnm","exec_duration":81.45}]},{"taskName":"python_s3_data_ingestion","instruction":"$12","trials":[{"job_name":"2026-04-23__02-24-35","trial_name":"python_s3_data_ingestion__rg5yVq8","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":226.713,"latency_breakdown":{"env_setup":12.854,"agent_setup":22.101,"agent_exec":169.042,"verifier":3.29},"taskName":"python_s3_data_ingestion","jobId":"rg5yVq8","exec_duration":169.042}]},{"taskName":"python_schema_migration_tool","instruction":"$13","trials":[{"job_name":"2026-04-23__02-24-35","trial_name":"python_schema_migration_tool__dCmpHb8","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":370.277,"latency_breakdown":{"env_setup":8.163,"agent_setup":18.038,"agent_exec":325.24,"verifier":3.797},"taskName":"python_schema_migration_tool","jobId":"dCmpHb8","exec_duration":325.24}]},{"taskName":"python_schema_migration_tool_v2","instruction":"$14","trials":[{"job_name":"2026-04-23__02-24-35","trial_name":"python_schema_migration_tool_v2__APgqLzc","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":null,"error":true,"latency_sec":69.47,"latency_breakdown":{"env_setup":13.09,"agent_setup":16.975,"agent_exec":null,"verifier":null},"taskName":"python_schema_migration_tool_v2","jobId":"APgqLzc","exec_duration":69.47}]},{"taskName":"python_sdk_basic_ingestion","instruction":"# ClickHouse Python SDK Ingestion\n\n## Background\nWrite a Python script to interact with ClickHouse Cloud using the official `clickhouse-connect` SDK.\n\n## Requirements\n- Connect to ClickHouse Cloud using the following environment variables: `CLICKHOUSE_HOST`, `CLICKHOUSE_PORT`, `CLICKHOUSE_USER`, `CLICKHOUSE_PASSWORD`.\n- Create a table named `test_events` with columns `id UInt64` and `event_type String`. Use `MergeTree` engine ordered by `id`.\n- Insert 3 rows of data: `[1, 'push']`, `[2, 'pull_request']`, `[3, 'issue']`.\n- Query the table to count the number of rows and print the result.\n\n## Implementation\n1. Initialize a Python project in `/home/user/ch_project`.\n2. Install `clickhouse-connect`.\n3. Create a script `ingest.py` that connects to the database, creates the table, inserts data, and queries the count.\n4. Run the script and redirect output to `/home/user/ch_project/output.log`.\n\n## Constraints\n- Project path: `/home/user/ch_project`\n- Log file: `/home/user/ch_project/output.log`","trials":[{"job_name":"2026-04-23__02-24-35","trial_name":"python_sdk_basic_ingestion__8gzy6in","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":268.215,"latency_breakdown":{"env_setup":13.007,"agent_setup":18.872,"agent_exec":206.562,"verifier":3.449},"taskName":"python_sdk_basic_ingestion","jobId":"8gzy6in","exec_duration":206.562}]},{"taskName":"schema_migration","instruction":"$15","trials":[{"job_name":"2026-04-23__02-24-35","trial_name":"schema_migration__LsVyQ2B","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":375.866,"latency_breakdown":{"env_setup":4.027,"agent_setup":15.735,"agent_exec":337.542,"verifier":3.286},"taskName":"schema_migration","jobId":"LsVyQ2B","exec_duration":337.542}]},{"taskName":"system_metrics_dashboard","instruction":"$16","trials":[{"job_name":"2026-04-23__02-24-35","trial_name":"system_metrics_dashboard__ybGeTMj","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":462.505,"latency_breakdown":{"env_setup":12.925,"agent_setup":16.844,"agent_exec":151.494,"verifier":262.081},"taskName":"system_metrics_dashboard","jobId":"ybGeTMj","exec_duration":151.494}]}]}]]}],["$L17","$L18"],"$L19"]}],"loading":null,"isPartial":false}
+17:["$","script","script-0",{"src":"/clickhouse-benchmark/_next/static/chunks/8db7552398001a94.js","async":true}]
+18:["$","script","script-1",{"src":"/clickhouse-benchmark/_next/static/chunks/be08138953094657.js","async":true}]
+19:["$","$L1a",null,{"children":["$","$1b",null,{"name":"Next.MetadataOutlet","children":"$@1c"}]}]
+1c:null
