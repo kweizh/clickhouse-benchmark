@@ -13,10 +13,10 @@ mcp_servers = []
 [environment.env]
 POCHI_LOG = "debug"
 POCHI_API_KEY = "${POCHI_API_KEY}"
-CH_HOST = "localhost"
-CH_PORT = "8443"
-CH_USER = "default"
-CH_PASSWORD = "password"
+CH_HOST = "${CLICKHOUSE_HOST}"
+CH_PORT = "${CLICKHOUSE_PORT}"
+CH_USER = "${CLICKHOUSE_USER}"
+CH_PASSWORD = "${CLICKHOUSE_PASSWORD}"
 
 [agent]
 timeout_sec = 600
@@ -26,10 +26,10 @@ timeout_sec = 600
 
 [verifier.env]
 POCHI_LOG = "debug"
-CH_HOST = "localhost"
-CH_PORT = "8443"
-CH_USER = "default"
-CH_PASSWORD = "password"
 POCHI_API_KEY = "${POCHI_API_KEY}"
+CH_HOST = "${CLICKHOUSE_HOST}"
+CH_PORT = "${CLICKHOUSE_PORT}"
+CH_USER = "${CLICKHOUSE_USER}"
+CH_PASSWORD = "${CLICKHOUSE_PASSWORD}"
 
 [solution.env]
